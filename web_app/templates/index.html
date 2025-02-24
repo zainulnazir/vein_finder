@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vein Finder</title>
+    <link rel="stylesheet" href="/web_app/static/style.css">
+</head>
+
+<body>
+    <h1>Vein Finder</h1>
+    <img src="/image" alt="Processed Image" id="veinImage" style="max-width: 640px;">
+    <form method="POST" action="/scan">
+        <button type="submit">Start Scan</button>
+    </form>
+    <script>
+        // Refresh image after scan
+        document.querySelector('form').onsubmit = function () {
+            setTimeout(() => {
+                document.getElementById('veinImage').src = '/image?' + new Date().getTime();
+            }, 1000); // Delay to allow scan to complete
+            return true;
+        };
+    </script>
+</body>
+
+</html>
